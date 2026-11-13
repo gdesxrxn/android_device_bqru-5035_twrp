@@ -1,14 +1,11 @@
 name: Build
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - '7.0'
+  workflow_dispatch:  
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: 1. Установка утилиты repo (База)
