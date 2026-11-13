@@ -1,14 +1,8 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Сборочное имя (То, что ищет команда lunch)
-# ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
 PRODUCT_NAME := BQru-5035
-
-# Железо (То, как называется папка с файлами устройства)
-# ДОКАЗАТЕЛЬСТВО: ro.build.product=v2600cn и ro.mediatek.project.path=device/tinno/v2600cn из default.prop
 PRODUCT_DEVICE := v2600cn
-
-PRODUCT_MODEL := BQru-5035
+PRODUCT_MODEL := BQ-5035
 PRODUCT_BRAND := BQru
 PRODUCT_MANUFACTURER := BQru
 
