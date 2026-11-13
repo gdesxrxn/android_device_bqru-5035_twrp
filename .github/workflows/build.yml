@@ -1,1 +1,49 @@
+name: Build
 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - '7.0'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: 1. Установка утилиты repo (База)
+        run: |
+          mkdir -p ~/.bin
+          curl -s https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+          chmod a+rx ~/.bin/repo
+          echo "~/.bin" >> $GITHUB_PATH
+          git config --global user.name "sxrxn"
+          git config --global user.email "356205156+gdesxrxn@users.noreply.github.com"
+          git config --global color.ui false
+
+      - name: 2. Загрузка голого кода Android 7.0 и TeamWin
+        run: |
+          mkdir workspace && cd workspace
+          # Инициализируем чистый манифест OmniROM 7.0
+          repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
+          repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+          
+          # Заменяем рекавери на ту самую оригинальную ветку android-7.0
+          rm -rf bootable/recovery
+          git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
+
+      - name: 3. Подключение твоего устройства (Strict path)
+        uses: actions/checkout@v4
+        with:
+          # Грузим строго в папку из твоего BoardConfig.mk
+          path: workspace/device/tinno/v2600cn
+          ref: '7.0'
+
+      - name: 4. Удар (Вызов компилятора)
+        run: |
+          cd workspace
+          export ALLOW_MISSING_DEPENDENCIES=true
+          source build/envsetup.sh
+          # Вызываем цель из твоего v2600cn.mk
+          lunch v2600cn-eng
+          mka recoveryimage -j$(nproc --all)
