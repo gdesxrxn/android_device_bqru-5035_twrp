@@ -15,6 +15,12 @@ jobs:
           path: workspace/device/tinno/v2600cn
           ref: '7.0'
 
+      # НОВЫЙ ШАГ: Подготовка сервера (Установка пакетов для сборки AOSP 7.0)
+      - name: 1.5. Установка зависимостей (build-essential, schedtool и др.)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
+
       # 2. База (без изменений)
       - name: 2. Установка утилиты repo
         run: |
@@ -27,29 +33,28 @@ jobs:
           git config --global color.ui false
 
       # 3. Инъекция патча и чистая загрузка
-      - name: 3. Загрузка Android 7.0 (С внедрением 01-omni-aosp.patch)
+      - name: 3. Загрузка Android 7.0 (С внедрением Git-патчей)
         run: |
           cd workspace
           
           # 3.1 Инициализируем манифест
           repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
           
-          # 3.2 ХИРУРГИЧЕСКИЙ ПЕРЕХВАТ: Накатываем патч по абсолютному пути (железобетонная надежность)
+          # 3.2 ХИРУРГИЧЕСКИЙ ПЕРЕХВАТ: Накатываем патч по абсолютному пути
           cd .repo/manifests
           git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/01-omni-aosp.patch
           git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/02-omni-default.patch
-          
           git commit -am "build: inject 01-omni-aosp.patch into manifest"
           cd ../../
           
-          # 3.3 Синхронизация. Флаг --force-broken УДАЛЕН, потому что наш манифест теперь идеален.
+          # 3.3 Синхронизация по идеальному манифесту
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
           
           # 3.4 Внедряем оригинальное рекавери 7.0 от TeamWin
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      # 4. Удар
+      # 4. Удар (Канон серверов)
       - name: 4. Вызов компилятора
         run: |
           cd workspace
