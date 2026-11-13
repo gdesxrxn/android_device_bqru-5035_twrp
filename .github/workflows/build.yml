@@ -60,5 +60,5 @@ jobs:
           cd workspace
           export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
-          lunch BQru_5035-eng
+          lunch BQru5035-eng
           mka recoveryimage -j$(nproc --all)
