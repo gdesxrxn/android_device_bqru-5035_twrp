@@ -37,6 +37,8 @@ jobs:
           # 3.2 ХИРУРГИЧЕСКИЙ ПЕРЕХВАТ: Накатываем патч по абсолютному пути (железобетонная надежность)
           cd .repo/manifests
           git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/01-omni-aosp.patch
+          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/02-omni-default.patch
+          
           git commit -am "build: inject 01-omni-aosp.patch into manifest"
           cd ../../
           
