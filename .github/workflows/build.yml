@@ -60,6 +60,5 @@ jobs:
           cd workspace
           export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
-          export TARGET_PRODUCT=BQru-5035
-          export TARGET_BUILD_VARIANT=eng
+          lunch BQru_5035-eng
           mka recoveryimage -j$(nproc --all)
