@@ -54,22 +54,11 @@ jobs:
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      # 4. Удар (Прямая инъекция BoardConfig)
+      # 4. Удар (Канон серверов)
       - name: 4. Вызов компилятора
         run: |
           cd workspace
           export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
-          
-          # ХИРУРГИЧЕСКИЙ ХАК: Создаем временный каноничный Make-файл на лету.
-          # Это закроет все вопросы AOSP к структуре папок, не меняя твои файлы на GitHub.
-          echo 'PRODUCT_NAME := v2600cn' > device/tinno/v2600cn/v2600cn.mk
-          echo 'PRODUCT_DEVICE := v2600cn' >> device/tinno/v2600cn/v2600cn.mk
-          echo 'PRODUCT_MAKEFILES := $(LOCAL_DIR)/v2600cn.mk' > device/tinno/v2600cn/AndroidProducts.mk
-          
-          # Вызываем сборку напрямую по имени платы (v2600cn), обходя парсер lunch
-          export TARGET_PRODUCT=v2600cn
-          export TARGET_BUILD_VARIANT=eng
-          export TARGET_DEVICE=v2600cn
-          
+          lunch BQru_5035-eng
           mka recoveryimage -j$(nproc --all)
