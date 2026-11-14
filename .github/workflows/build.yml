@@ -54,19 +54,22 @@ jobs:
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      # 4. Удар (Серверный канон CI/CD)
-      - name: 4. Вызов компилятора
+      # 4. Удар (Изъятие файлов движка AOSP для реверс-инжиниринга)
+      - name: 4. Подготовка файлов парсера AOSP
         run: |
           cd workspace
-          export ALLOW_MISSING_DEPENDENCIES=true
-          source build/envsetup.sh
+          # Создаем папку для выгрузки исходного кода движка
+          mkdir -p $GITHUB_WORKSPACE/aosp_core_engine
           
-          # Выводим список всех найденных продуктов, чтобы понять, видит ли система наш AndroidProducts.mk
-          echo "DUMPING LUNCH MENU:"
-          
-          # Отключаем интерактивный lunch. 
-          # Загружаем канон напрямую в память, как делают заводские серверы.
-          export TARGET_PRODUCT=BQru-5035
-          export TARGET_BUILD_VARIANT=eng
-          
-          mka recoveryimage -j$(nproc --all)
+          # Копируем полные файлы, которые отвечают за логику lunch и поиск Make-файлов
+          cp build/core/product_config.mk $GITHUB_WORKSPACE/aosp_core_engine/
+          cp build/core/product.mk $GITHUB_WORKSPACE/aosp_core_engine/
+          cp build/core/envsetup.mk $GITHUB_WORKSPACE/aosp_core_engine/
+          cp build/envsetup.sh $GITHUB_WORKSPACE/aosp_core_engine/
+
+      # 5. Выгрузка в виде Артефакта
+      - name: 5. Загрузка исходников движка на GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: aosp-build-engine-files
+          path: aosp_core_engine/
