@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '10'
+          java-version: '9'
 
       - name: 1.5. Установка зависимостей (build-essential, schedtool и др.)
         run: |
