@@ -1,7 +1,7 @@
 diff --git a/core/product_config.mk b/core/product_config.mk
 index a8b63b4..f752ddd 100755
---- a/product_config.mk
-+++ b/product_config.mk
+--- a/core/product_config.mk
++++ b/core/product_config.mk
 @@ -32,7 +32,7 @@
  _ici_digits := 0 1 2 3 4 5 6 7 8 9
  _ici_alphaunderscore := \
