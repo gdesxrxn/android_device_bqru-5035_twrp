@@ -52,7 +52,7 @@ jobs:
           
           # 3.4 ХИРУРГИЯ ЯДРА AOSP: Легализация дефиса для инженерного канона
           cd build
-          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/03-ici_alphaunderscore.patch
+          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/03-_ici_alphaunderscore.patch
           cd ..
           
           # 3.5 Внедряем оригинальное рекавери 7.0 от TeamWin
