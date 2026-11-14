@@ -18,7 +18,7 @@ jobs:
       - name: 1.2. Настройка Java 8
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: '10'
 
       - name: 1.5. Установка зависимостей (build-essential, schedtool и др.)
