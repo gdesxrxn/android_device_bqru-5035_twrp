@@ -14,9 +14,9 @@ jobs:
           path: workspace/device/tinno/v2600cn
           ref: '7.0'
 
-      # НОВЫЙ ШАГ: Официальная установка Java 8 (Необходима для AOSP 7.0 и tools.jar)
+      # ИСПРАВЛЕНИЕ: Обновление до v5 устраняет технический долг и предупреждения Node.js
       - name: 1.2. Настройка Java 8
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '8'
