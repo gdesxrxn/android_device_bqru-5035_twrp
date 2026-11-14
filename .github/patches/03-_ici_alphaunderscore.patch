@@ -1,0 +1,13 @@
+diff --git a/product_config.mk b/product_config.mk
+index a8b63b4..f752ddd 100755
+--- a/product_config.mk
++++ b/product_config.mk
+@@ -32,7 +32,7 @@
+ _ici_digits := 0 1 2 3 4 5 6 7 8 9
+ _ici_alphaunderscore := \
+     a b c d e f g h i j k l m n o p q r s t u v w x y z \
+-    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _
++    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z _ -
+ define is-c-identifier
+ $(strip \
+   $(if $(1), \
