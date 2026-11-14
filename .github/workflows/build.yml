@@ -61,6 +61,9 @@ jobs:
           export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
           
+          # Выводим список всех найденных продуктов, чтобы понять, видит ли система наш AndroidProducts.mk
+          echo "DUMPING LUNCH MENU:"
+          
           # Отключаем интерактивный lunch. 
           # Загружаем канон напрямую в память, как делают заводские серверы.
           export TARGET_PRODUCT=BQru-5035
