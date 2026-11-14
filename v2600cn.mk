@@ -1,3 +1,4 @@
+$(warning PARSER ENTERED v2600cn.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Сборочное имя (то, что мы передаем в TARGET_PRODUCT)
