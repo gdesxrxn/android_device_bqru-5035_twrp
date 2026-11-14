@@ -1,4 +1,4 @@
-diff --git a/product_config.mk b/product_config.mk
+diff --git a/core/product_config.mk b/core/product_config.mk
 index a8b63b4..f752ddd 100755
 --- a/product_config.mk
 +++ b/product_config.mk
