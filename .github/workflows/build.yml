@@ -42,15 +42,12 @@ jobs:
         run: |
           sudo curl -s https://storage.googleapis.com/git-repo-downloads/repo -o /usr/local/bin/repo
           sudo chmod a+rx /usr/local/bin/repo
-          git config --global user.name "sxrxn"
-          git config --global user.email "356205156+gdesxrxn@users.noreply.github.com"
-          git config --global color.ui false
 
       - name: Init Repo
         working-directory: ${{ env.WORKSPACE_DIR }}
         run: repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
 
-      - name: Patch Manifest
+      - name: Patch omni-aosp, omni-default
         working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
         run: |
           git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
@@ -61,11 +58,11 @@ jobs:
         # Конкурентное исполнение сетевых I/O операций масштабируется до аппаратного предела хоста.
         run: repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-      - name: Patch Build
+      - name: Patch _ici_alphaunderscore
         working-directory: ${{ env.WORKSPACE_DIR }}/build
         run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
 
-      - name: Patch SEPolicy
+      - name: Patch domain
         working-directory: ${{ env.WORKSPACE_DIR }}/system/sepolicy
         run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/04-domain.patch
 
