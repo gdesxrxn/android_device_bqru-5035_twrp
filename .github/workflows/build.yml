@@ -15,7 +15,8 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # Митигация конфликтов среды выполнения через нативную инициализацию Node.js 24.
+        uses: actions/checkout@v7
         with:
           path: ${{ env.DEVICE_PATH }}
           ref: '7.0'
@@ -83,7 +84,8 @@ jobs:
           mka recoveryimage -j$(nproc --all)
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        # Детерминированное управление буфером передачи артефактов в изоляции Node.js 24.
+        uses: actions/upload-artifact@v7
         with:
           name: twrp-recovery-bqru-5035
           path: ${{ env.WORKSPACE_DIR }}/out/target/product/v2600cn/recovery.img
