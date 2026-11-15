@@ -77,3 +77,10 @@ jobs:
           export TARGET_BUILD_VARIANT=eng
 
           mka recoveryimage -j$(nproc --all)
+
+        # 5. Выгрузка готового образа
+      - name: 5. Сохранение recovery.img
+        uses: actions/upload-artifact@v4
+        with:
+          name: twrp-recovery-bqru-5035
+          path: workspace/out/target/product/v2600cn/recovery.img
