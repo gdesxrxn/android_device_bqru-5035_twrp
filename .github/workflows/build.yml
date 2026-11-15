@@ -14,7 +14,6 @@ jobs:
           path: workspace/device/tinno/v2600cn
           ref: '7.0'
 
-      # ИСПРАВЛЕНИЕ: Обновление до v5 устраняет технический долг и предупреждения Node.js
       - name: 1.2. Настройка Java 8
         uses: actions/setup-java@v5
         with:
@@ -57,6 +56,16 @@ jobs:
           
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
+
+      # ВРЕМЕННЫЙ ШАГ: Выгрузка оригинального файла для создания патча
+      - name: 3.5. Экстракция system/sepolicy/domain.te
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-domain.te
+          path: workspace/system/sepolicy/domain.te
+
+      - name: 3.8. Устранение предупреждения Node.js
+        run: echo "ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true" >> $GITHUB_ENV
 
       - name: 4. Вызов компилятора
         run: |
