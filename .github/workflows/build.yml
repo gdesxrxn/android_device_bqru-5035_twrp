@@ -1,86 +1,93 @@
 name: Build
 
 on:
-  workflow_dispatch:  
+  workflow_dispatch:
+
+env:
+  WORKSPACE_DIR: "workspace"
+  DEVICE_PATH: "workspace/device/tinno/v2600cn"
+  DEVICE_TARGET: "BQru-5035"
+  PATCH_BASE: ".github/patches"
 
 jobs:
   build:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: 1. Подключение твоего устройства и патчей (Strict path)
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: workspace/device/tinno/v2600cn
+          path: ${{ env.DEVICE_PATH }}
           ref: '7.0'
 
-      - name: 1.2. Настройка Java 8
+      - name: Setup Java
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '8'
 
-      - name: 1.5. Установка зависимостей (build-essential, schedtool и др.)
+      - name: Install Dependencies
+        # Оптимизация пространственной сложности O(1) через очистку кэша apt.
+        # Митигация I/O deadlock через подавление TTY-взаимодействия.
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
-          sudo apt-get update
-          sudo apt-get install -y bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2
+          sudo apt-get clean
           sudo ln -sf /usr/bin/python2 /usr/bin/python
 
-      - name: 2. Установка утилиты repo
+      - name: Setup Repo Tool
+        # Детерминированное разрешение путей O(1) без мутации массивов $GITHUB_PATH.
         run: |
-          mkdir -p ~/.bin
-          curl -s https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
-          chmod a+rx ~/.bin/repo
-          echo "~/.bin" >> $GITHUB_PATH
+          sudo curl -s https://storage.googleapis.com/git-repo-downloads/repo -o /usr/local/bin/repo
+          sudo chmod a+rx /usr/local/bin/repo
           git config --global user.name "sxrxn"
           git config --global user.email "356205156+gdesxrxn@users.noreply.github.com"
           git config --global color.ui false
 
-      - name: 3. Загрузка Android 7.0 (С внедрением Git-патчей)
+      - name: Init Repo
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        run: repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
+
+      - name: Patch Manifest
+        working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
         run: |
-          cd workspace
-          
-          # 3.1 Инициализация манифеста
-          repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
-          
-          # 3.2 Патчинг манифеста
-          cd .repo/manifests
-          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/01-omni-aosp.patch
-          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/02-omni-default.patch
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
           git commit -am "build: inject 01-omni-aosp.patch into manifest"
-          cd ../../
-          
-          # 3.3 Синхронизация исходного кода
-          repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-          
-          # 3.4 Патчинг сборочной системы (Разрешение дефисов в имени)
-          cd build
-          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/03-_ici_alphaunderscore.patch
-          cd ..
-          
-          # 3.5 Патчинг бага безопасности SELinux в OmniROM
-          cd system/sepolicy
-          git apply $GITHUB_WORKSPACE/workspace/device/tinno/v2600cn/.github/patches/04-domain.patch
-          cd ../..
-          
-          # 3.6 Внедрение оригинального TWRP
+
+      - name: Sync Source
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        # Конкурентное исполнение сетевых I/O операций масштабируется до аппаратного предела хоста.
+        run: repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+      - name: Patch Build
+        working-directory: ${{ env.WORKSPACE_DIR }}/build
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
+
+      - name: Patch SEPolicy
+        working-directory: ${{ env.WORKSPACE_DIR }}/system/sepolicy
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/04-domain.patch
+
+      - name: Clone Recovery
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        run: |
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      - name: 4. Вызов компилятора
+      - name: Compile
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        # Митигация прерываний графа зависимостей сборки.
         run: |
-          cd workspace
           export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
-
-          export TARGET_PRODUCT=BQru-5035
+          export TARGET_PRODUCT=${{ env.DEVICE_TARGET }}
           export TARGET_BUILD_VARIANT=eng
-
           mka recoveryimage -j$(nproc --all)
 
-        # 5. Выгрузка готового образа
-      - name: 5. Сохранение recovery.img
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: twrp-recovery-bqru-5035
-          path: workspace/out/target/product/v2600cn/recovery.img
+          path: ${{ env.WORKSPACE_DIR }}/out/target/product/v2600cn/recovery.img
