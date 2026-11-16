@@ -1,4 +1,4 @@
-Build: Beta-build
+name: Beta-build
 
 on:
   workflow_dispatch:
