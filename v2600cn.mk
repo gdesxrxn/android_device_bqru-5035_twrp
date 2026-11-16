@@ -1,6 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-ADDITIONAL_DEFAULT_PROPERTIES += ro.bootimage.build.fingerprint=alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
+BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
