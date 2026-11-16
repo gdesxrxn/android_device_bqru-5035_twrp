@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index f69908e..4182a4b 100755
+--- a/Makefile
++++ b/Makefile
+@@ -95,7 +95,7 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
+ 	        echo "#" >> $@;
+ 	$(hide) echo ro.bootimage.build.date=`$(DATE_FROM_FILE)`>>$@
+ 	$(hide) echo ro.bootimage.build.date.utc=`$(DATE_FROM_FILE) +%s`>>$@
+-	$(hide) echo ro.bootimage.build.fingerprint="$(BUILD_FINGERPRINT_FROM_FILE)">>$@
++	$(hide) echo ro.bootimage.build.fingerprint="$(BOOTIMAGE_BUILD_FINGERPRINT)">>$@
+ 	$(hide) build/tools/post_process_props.py $@
+ 
+ # -----------------------------------------------------------------
+@@ -224,7 +224,7 @@ endif
+ 			PRODUCT_MANUFACTURER="$(PRODUCT_MANUFACTURER)" \
+ 			PRIVATE_BUILD_DESC="$(PRIVATE_BUILD_DESC)" \
+ 			BUILD_ID="$(BUILD_ID)" \
+-			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_ID)" \
++			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_lD)" \
+ 			DATE="$(DATE_FROM_FILE)" \
+ 			BUILD_NUMBER="$(BUILD_NUMBER_FROM_FILE)" \
+ 			BOARD_BUILD_SYSTEM_ROOT_IMAGE="$(BOARD_BUILD_SYSTEM_ROOT_IMAGE)" \
