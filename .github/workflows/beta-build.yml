@@ -73,13 +73,6 @@ jobs:
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      - name: Extract build/core/Makefile
-        # Выгрузка оригинального Makefile для локального анализа и создания патча
-        uses: actions/upload-artifact@v7
-        with:
-          name: core-makefile-original
-          path: ${{ env.WORKSPACE_DIR }}/build/core/Makefile
-
       - name: Compile
         working-directory: ${{ env.WORKSPACE_DIR }}
         # Митигация прерываний графа зависимостей сборки.
