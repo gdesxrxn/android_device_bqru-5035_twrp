@@ -1,7 +1,7 @@
-diff --git a/Makefile b/Makefile
+diff --git a/core/Makefile b/core/Makefile
 index f69908e..3b4826b 100755
---- a/Makefile
-+++ b/Makefile
+--- a/core/Makefile
++++ b/core/Makefile
 @@ -95,7 +95,7 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
  	        echo "#" >> $@;
  	$(hide) echo ro.bootimage.build.date=`$(DATE_FROM_FILE)`>>$@
