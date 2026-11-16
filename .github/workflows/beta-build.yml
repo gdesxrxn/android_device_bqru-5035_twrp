@@ -61,8 +61,10 @@ jobs:
 
       - name: Patch _ici_alphaunderscore
         working-directory: ${{ env.WORKSPACE_DIR }}/build
-        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
-
+        run: |
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/05-Makefile.patch
+        
       - name: Patch domain
         working-directory: ${{ env.WORKSPACE_DIR }}/system/sepolicy
         run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/04-domain.patch
