@@ -1,1 +1,91 @@
+name: Build
 
+on:
+  workflow_dispatch:
+
+env:
+  WORKSPACE_DIR: "workspace"
+  DEVICE_PATH: "workspace/device/tinno/v2600cn"
+  DEVICE_TARGET: "BQru-5035"
+  PATCH_BASE: ".github/patches"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        # Митигация конфликтов среды выполнения через нативную инициализацию Node.js 24.
+        uses: actions/checkout@v7
+        with:
+          path: ${{ env.DEVICE_PATH }}
+          ref: '7.0'
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+
+      - name: Install Dependencies
+        # Оптимизация пространственной сложности O(1) через очистку кэша apt.
+        # Митигация I/O deadlock через подавление TTY-взаимодействия.
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2
+          sudo apt-get clean
+          sudo ln -sf /usr/bin/python2 /usr/bin/python
+
+      - name: Setup Repo Tool
+        # Детерминированное разрешение путей O(1) без мутации массивов $GITHUB_PATH.
+        run: |
+          sudo curl -s https://storage.googleapis.com/git-repo-downloads/repo -o /usr/local/bin/repo
+          sudo chmod a+rx /usr/local/bin/repo
+
+      - name: Init Repo
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        run: repo init -u https://github.com/omnirom/android.git -b android-7.0 --depth=1
+
+      - name: Patch omni-aosp, omni-default
+        working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
+        run: |
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
+
+      - name: Sync Source
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        # Конкурентное исполнение сетевых I/O операций масштабируется до аппаратного предела хоста.
+        run: repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+      - name: Patch _ici_alphaunderscore
+        working-directory: ${{ env.WORKSPACE_DIR }}/build
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
+
+      - name: Patch domain
+        working-directory: ${{ env.WORKSPACE_DIR }}/system/sepolicy
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/04-domain.patch
+
+      - name: Clone Recovery
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        run: |
+          rm -rf bootable/recovery
+          git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
+
+      - name: Compile
+        working-directory: ${{ env.WORKSPACE_DIR }}
+        # Митигация прерываний графа зависимостей сборки.
+        run: |
+          export ALLOW_MISSING_DEPENDENCIES=true
+          source build/envsetup.sh
+          export TARGET_PRODUCT=${{ env.DEVICE_TARGET }}
+          export TARGET_BUILD_VARIANT=eng
+          mka recoveryimage -j$(nproc --all)
+
+      - name: Upload Artifact
+        # Детерминированное управление буфером передачи артефактов в изоляции Node.js 24.
+        uses: actions/upload-artifact@v7
+        with:
+          name: twrp-recovery-bqru-5035
+          path: ${{ env.WORKSPACE_DIR }}/out/target/product/v2600cn/recovery.img
