@@ -59,7 +59,7 @@ jobs:
         # Конкурентное исполнение сетевых I/O операций масштабируется до аппаратного предела хоста.
         run: repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
-      - name: Patch _ici_alphaunderscore
+      - name: Patch _ici_alphaunderscore, Makefile
         working-directory: ${{ env.WORKSPACE_DIR }}/build
         run: |
           git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
