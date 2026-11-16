@@ -2,6 +2,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
 
+BUILD_ID := NRD90M
+
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
 PRODUCT_NAME := BQru-5035
