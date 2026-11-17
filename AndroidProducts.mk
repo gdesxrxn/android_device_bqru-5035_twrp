@@ -1,4 +1,1 @@
 PRODUCT_MAKEFILES := BQru-5035:$(LOCAL_DIR)/v2600cn.mk
-
-# ro.build.date
-BUILD_DATE := Mon Feb 26 18:01:42 CST 2018
