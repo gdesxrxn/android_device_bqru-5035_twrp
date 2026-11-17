@@ -1,8 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# ro.bootimage.build.date
-BOOTIMAGE_BUILD_DATE := Mon Feb 26 18:01:42 CST 2018
-
+# ro.bootimage.build.date.utc
 BOOTIMAGE_BUILD_DATE_UTC := 1519639302
 
 # ro.bootimage.build.fingerprint
