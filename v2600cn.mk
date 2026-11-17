@@ -10,13 +10,13 @@ BUILD_ID := NRD90M
 BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
 # ro.build.version.incremental
-BUILD_NUMBER_FROM_FILE := 1519639381
+BUILD_VERSION_INCREMENTAL := 1519639381
 
 # ro.build.version.security_patch
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date.utc
-# BUILD_DATE_UTC := 1519639302
+BUILD_DATE_UTC := 1519639302
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
