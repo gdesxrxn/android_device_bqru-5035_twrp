@@ -12,6 +12,7 @@ BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 # ro.build.version.incremental
 BUILD_NUMBER_FROM_FILE := 1519639381
 
+# ro.build.version.security_patch
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date.utc
