@@ -8,6 +8,8 @@ BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
 BUILD_VERSION_INCREMENTAL := 1519639381
 
+BUILD_DATE_UTC := 1519639302
+
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
 PRODUCT_NAME := BQru-5035
