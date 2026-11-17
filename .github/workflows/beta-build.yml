@@ -52,7 +52,7 @@ jobs:
         working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
         run: |
           git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
-          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
+         # git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
 
       - name: Sync Source
         working-directory: ${{ env.WORKSPACE_DIR }}
