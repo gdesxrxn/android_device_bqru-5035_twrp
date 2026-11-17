@@ -15,6 +15,8 @@ BUILD_VERSION_INCREMENTAL := 1519639381
 # ro.build.version.security_patch.
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
+BUILD_DATE := Kejdje
+
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
 
