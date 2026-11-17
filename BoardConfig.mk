@@ -1,9 +1,6 @@
 # Оригинальный путь сборки Tinno Mobile
 LOCAL_PATH := device/tinno/v2600cn
 
-# ro.build.date
-BUILD_DATE := Mon Feb 26 18:01:42 CST 2018
-
 # Архитектура (доказано dalvik.vm.isa.arm.variant=cortex-a7 и ro.product.cpu.abi=armeabi-v7a)
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
