@@ -18,10 +18,14 @@ BUILD_VERSION_INCREMENTAL := 1519639381
 # ro.build.version.security_patch.
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
-BUILD_DATE := Mon Feb 26 18:01:42 CST 2018
-
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
+
+# ro.build.user
+BUILD_USERNAME := android
+
+# ro.build.host
+BUILD_HOSTNAME := ubuntu
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
