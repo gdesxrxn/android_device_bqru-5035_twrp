@@ -83,6 +83,7 @@ jobs:
           source build/envsetup.sh
           export TARGET_PRODUCT=${{ env.DEVICE_TARGET }}
           export TARGET_BUILD_VARIANT=eng
+          BUILD_DATE := Mon Feb 26 18:01:42 CST 2018
           mka recoveryimage -j$(nproc --all)
 
       - name: Upload Artifact
