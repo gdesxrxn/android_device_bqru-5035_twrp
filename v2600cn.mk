@@ -1,21 +1,21 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # ro.bootimage.build.fingerprint
-BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
+BUILD_FINGERPRINT_FROM_FILE := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
 
 # ro.build.id
 BUILD_ID := NRD90M
 
 # ro.build.display.id
-BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
+# BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
 # ro.build.version.incremental
-BUILD_VERSION_INCREMENTAL := 1519639381
+# BUILD_VERSION_INCREMENTAL := 1519639381
 
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date.utc
-BUILD_DATE_UTC := 1519639302
+# BUILD_DATE_UTC := 1519639302
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
