@@ -1,5 +1,5 @@
 diff --git a/core/Makefile b/core/Makefile
-index f69908e..157ebb0 100755
+index f69908e..066cc29 100755
 --- a/core/Makefile
 +++ b/core/Makefile
 @@ -95,7 +95,7 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
@@ -23,3 +23,12 @@ index f69908e..157ebb0 100755
  			BOARD_BUILD_SYSTEM_ROOT_IMAGE="$(BOARD_BUILD_SYSTEM_ROOT_IMAGE)" \
  			AB_OTA_UPDATER="$(AB_OTA_UPDATER)" \
  			PLATFORM_VERSION="$(PLATFORM_VERSION)" \
+@@ -990,7 +990,7 @@ define build-recoveryramdisk
+   $(hide) cp $(RECOVERY_INSTALL_OTA_KEYS) $(TARGET_RECOVERY_ROOT_OUT)/res/keys
+   $(hide) cat $(INSTALLED_DEFAULT_PROP_TARGET) $(recovery_build_prop) \
+           > $(TARGET_RECOVERY_ROOT_OUT)/default.prop
+-  $(SED_INPLACE) 's/ro.build.date.utc=.*/ro.build.date.utc=0/g' $(TARGET_RECOVERY_ROOT_OUT)/default.prop
++  $(SED_INPLACE) 's/ro.build.date.utc=.*/ro.build.date.utc=$(BUILD_DATE_UTC)/g' $(TARGET_RECOVERY_ROOT_OUT)/default.prop
+   $(SED_INPLACE) 's/ro.adb.secure=1/ro.adb.secure=0/g' $(TARGET_RECOVERY_ROOT_OUT)/default.prop
+   $(if $(filter true,$(BOARD_BUILD_SYSTEM_ROOT_IMAGE)), \
+     $(hide) mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/system_root; \
