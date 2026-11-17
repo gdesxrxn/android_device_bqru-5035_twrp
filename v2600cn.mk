@@ -21,12 +21,6 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
 
-# ro.build.user
-BUILD_USERNAME := android
-
-# ro.build.host
-BUILD_HOSTNAME := ubuntu
-
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
 PRODUCT_NAME := BQru-5035
