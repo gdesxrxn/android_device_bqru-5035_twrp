@@ -1,5 +1,5 @@
 diff --git a/core/Makefile b/core/Makefile
-index f69908e..066cc29 100755
+index f69908e..1594ddc 100755
 --- a/core/Makefile
 +++ b/core/Makefile
 @@ -95,7 +95,7 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
@@ -16,9 +16,10 @@ index f69908e..066cc29 100755
  			PRIVATE_BUILD_DESC="$(PRIVATE_BUILD_DESC)" \
  			BUILD_ID="$(BUILD_ID)" \
 -			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_ID)" \
-+			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_lD)" \
- 			DATE="$(DATE_FROM_FILE)" \
+-			DATE="$(DATE_FROM_FILE)" \
 -			BUILD_NUMBER="$(BUILD_NUMBER_FROM_FILE)" \
++			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_lD)" \
++			DATE="$(BUILD_DATE)" \
 +			BUILD_NUMBER="$(BUILD_VERSION_INCREMENTAL)" \
  			BOARD_BUILD_SYSTEM_ROOT_IMAGE="$(BOARD_BUILD_SYSTEM_ROOT_IMAGE)" \
  			AB_OTA_UPDATER="$(AB_OTA_UPDATER)" \
