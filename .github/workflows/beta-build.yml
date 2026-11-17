@@ -77,12 +77,14 @@ jobs:
 
       - name: Compile
         working-directory: ${{ env.WORKSPACE_DIR }}
-        # Митигация прерываний графа зависимостей сборки.
+        env:
+          ALLOW_MISSING_DEPENDENCIES: "true"
+          TARGET_PRODUCT: ${{ env.DEVICE_TARGET }}
+          TARGET_BUILD_VARIANT: "eng"
+          BUILD_USERNAME: "android"
+          BUILD_HOSTNAME: "ubuntu"
         run: |
-          export ALLOW_MISSING_DEPENDENCIES=true
           source build/envsetup.sh
-          export TARGET_PRODUCT=${{ env.DEVICE_TARGET }}
-          export TARGET_BUILD_VARIANT=eng
           mka recoveryimage -j$(nproc --all)
 
       - name: Upload Artifact
