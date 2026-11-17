@@ -1,5 +1,5 @@
 diff --git a/core/Makefile b/core/Makefile
-index f69908e..4aabcd5 100755
+index f69908e..fb6a136 100755
 --- a/core/Makefile
 +++ b/core/Makefile
 @@ -94,8 +94,8 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
@@ -8,7 +8,7 @@ index f69908e..4aabcd5 100755
  	$(hide) echo ro.bootimage.build.date=`$(DATE_FROM_FILE)`>>$@
 -	$(hide) echo ro.bootimage.build.date.utc=`$(DATE_FROM_FILE) +%s`>>$@
 -	$(hide) echo ro.bootimage.build.fingerprint="$(BUILD_FINGERPRINT_FROM_FILE)">>$@
-+	$(hide) echo ro.bootimage.build.date.utc=$(BOOTIMAGE_BUILD_DATE_UTC)>>$@
++	$(hide) echo ro.bootimage.build.date.utc="$(BOOTIMAGE_BUILD_DATE_UTC)">>$@
 +	$(hide) echo ro.bootimage.build.fingerprint="$(BOOTIMAGE_BUILD_FINGERPRINT)">>$@
  	$(hide) build/tools/post_process_props.py $@
  
