@@ -52,7 +52,7 @@ jobs:
         working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
         run: |
           git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
-         # git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
+          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
 
       - name: Sync Source
         working-directory: ${{ env.WORKSPACE_DIR }}
@@ -61,10 +61,8 @@ jobs:
 
       - name: Patch _ici_alphaunderscore, Makefile
         working-directory: ${{ env.WORKSPACE_DIR }}/build
-        run: |
-          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
-          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/05-Makefile.patch
-        
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/03-_ici_alphaunderscore.patch
+          
       - name: Patch domain
         working-directory: ${{ env.WORKSPACE_DIR }}/system/sepolicy
         run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/04-domain.patch
