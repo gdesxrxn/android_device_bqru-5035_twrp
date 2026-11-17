@@ -75,19 +75,13 @@ jobs:
           rm -rf bootable/recovery
           git clone -b android-7.0 https://github.com/TeamWin/android_bootable_recovery.git bootable/recovery
 
-      - name: Extract build/tools/buildinfo.sh
-        # Выгрузка оригинального Makefile для локального анализа и создания патча
-        uses: actions/upload-artifact@v7
-        with:
-          name: tool-sbuildinfo-original
-          path: ${{ env.WORKSPACE_DIR }}/build/tools/buildinfo.sh
-
       - name: Compile
         working-directory: ${{ env.WORKSPACE_DIR }}
         env:
           ALLOW_MISSING_DEPENDENCIES: "true"
           TARGET_PRODUCT: ${{ env.DEVICE_TARGET }}
           TARGET_BUILD_VARIANT: "eng"
+          USER: "android"
         run: |
           source build/envsetup.sh
           mka recoveryimage -j$(nproc --all)
