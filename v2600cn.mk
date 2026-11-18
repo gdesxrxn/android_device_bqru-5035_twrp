@@ -12,12 +12,6 @@ BUILD_ID := NRD90M
 # ro.build.display.id
 # BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
-# ro.build.version.incremental
-# BUILD_VERSION_INCREMENTAL := 1519639381
-
-# ro.build.version.security_patch.
-# PLATFORM_SECURITY_PATCH := 2017-07-05
-
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
 
@@ -35,3 +29,9 @@ PRODUCT_MANUFACTURER := BQru
 
 # Криптографический отпечаток сборки (Оставляем как есть)
 BUILD_FINGERPRINT := BQru/BQru-5035/BQru-5035:7.0/NRD90M/1502458275:user/release-keys
+
+# ro.build.version.incremental
+# BUILD_VERSION_INCREMENTAL := 1519639381
+
+# ro.build.version.security_patch.
+# PLATFORM_SECURITY_PATCH := 2017-07-05
