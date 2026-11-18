@@ -7,7 +7,7 @@ BOOTIMAGE_BUILD_DATE_UTC := 1519639302
 BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
 
 # ro.build.id.
-BUILD_ID := NRD90M
+# BUILD_ID := NRD90M
 
 # ro.build.display.id
 BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
