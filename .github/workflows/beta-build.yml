@@ -77,7 +77,7 @@ jobs:
         # Временная сложность O(K), где K - размер файла .env. Пространственная сложность O(K) для IPC передачи в GITHUB_ENV.
         # Митигация потери состояния: прямая трансляция переменных конфигурации в глобальную RAM область Runner-а.
         working-directory: ${{ env.DEVICE_PATH }}
-        run: cat v2600cn.env >> $GITHUB_ENV
+        run: grep -v '^#' v2600cn.env | grep -v '^$' >> $GITHUB_ENV
 
       - name: Compile
         working-directory: ${{ env.WORKSPACE_DIR }}
