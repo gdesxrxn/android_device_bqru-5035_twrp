@@ -21,7 +21,7 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
 
-ro.build.type=
+# ro.build.type=
 TARGET_BUILD_TYPE := user
 
 # ro.build.user=
