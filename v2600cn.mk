@@ -19,7 +19,7 @@ BUILD_NUMBER := 1519639381
 BUILD_DATE_UTC := 1519639302
 
 # ro.build.user
-USER=android
+USER := android
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
