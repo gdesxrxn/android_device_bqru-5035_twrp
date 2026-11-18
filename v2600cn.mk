@@ -19,7 +19,7 @@ BUILD_NUMBER := 1519639381
 # ro.build.version.security_patch=
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
-PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai LC_ALL=C date -d @1519639302"
+DATE="env TZ=Asia/Shanghai LC_ALL=C date -d @1519639302"
 
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
