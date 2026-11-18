@@ -10,7 +10,8 @@ BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:u
 BUILD_ID := NRD90M
 
 # ro.build.display.id
-BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=alps-mp-n0.mp2-V1_tinno6580.we.n
+# BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
 # ro.build.version.incremental=
 BUILD_NUMBER := 1519639381
@@ -23,7 +24,7 @@ BUILD_DATE_UTC := 1519639302
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
+# PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # ro.build.user=
 USER := android
