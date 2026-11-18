@@ -16,12 +16,12 @@ BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 BUILD_NUMBER := 1519639381
 
 # ro.build.version.security_patch=
-PLATFORM_SECURITY_PATCH=2017-07-05
+PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
 
-# ro.build.user
+# ro.build.user=
 USER := android
 
 # Сборочное имя (То, что ищет команда lunch)
