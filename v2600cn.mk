@@ -22,7 +22,7 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 BUILD_DATE_UTC := 1519639302
 
 # ro.build.type=
-TARGET_BUILD_TYPE := user
+TARGET_BUILD_VARIANT := user
 
 # ro.build.user=
 USER := android
