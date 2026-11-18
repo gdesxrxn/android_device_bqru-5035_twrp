@@ -1,5 +1,5 @@
 diff --git a/core/Makefile b/core/Makefile
-index f69908e..fb6a136 100755
+index f69908e..d18e9ab 100755
 --- a/core/Makefile
 +++ b/core/Makefile
 @@ -94,8 +94,8 @@ $(INSTALLED_DEFAULT_PROP_TARGET): $(intermediate_system_build_prop)
@@ -13,18 +13,15 @@ index f69908e..fb6a136 100755
  	$(hide) build/tools/post_process_props.py $@
  
  # -----------------------------------------------------------------
-@@ -224,9 +224,9 @@ endif
+@@ -224,7 +224,7 @@ endif
  			PRODUCT_MANUFACTURER="$(PRODUCT_MANUFACTURER)" \
  			PRIVATE_BUILD_DESC="$(PRIVATE_BUILD_DESC)" \
  			BUILD_ID="$(BUILD_ID)" \
 -			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_ID)" \
 +			BUILD_DISPLAY_ID="$(BUILD_DISPLAY_lD)" \
  			DATE="$(DATE_FROM_FILE)" \
--			BUILD_NUMBER="$(BUILD_NUMBER_FROM_FILE)" \
-+			BUILD_NUMBER="$(BUILD_VERSION_INCREMENTAL)" \
+ 			BUILD_NUMBER="$(BUILD_NUMBER_FROM_FILE)" \
  			BOARD_BUILD_SYSTEM_ROOT_IMAGE="$(BOARD_BUILD_SYSTEM_ROOT_IMAGE)" \
- 			AB_OTA_UPDATER="$(AB_OTA_UPDATER)" \
- 			PLATFORM_VERSION="$(PLATFORM_VERSION)" \
 @@ -990,7 +990,7 @@ define build-recoveryramdisk
    $(hide) cp $(RECOVERY_INSTALL_OTA_KEYS) $(TARGET_RECOVERY_ROOT_OUT)/res/keys
    $(hide) cat $(INSTALLED_DEFAULT_PROP_TARGET) $(recovery_build_prop) \
