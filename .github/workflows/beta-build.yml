@@ -80,7 +80,8 @@ jobs:
           TARGET_PRODUCT: ${{ env.DEVICE_TARGET }}
         run: |
           source build/envsetup.sh
-          mka recoveryimage -j$(nproc --all) DATE_FROM_FILE="env TZ=Asia/Shanghai LC_ALL=C date -d @1519639302"
+          mka recoveryimage -j$(nproc --all) \
+          DATE_FROM_FILE="env TZ=Asia/Shanghai LC_ALL=C date -d @1519639302"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
