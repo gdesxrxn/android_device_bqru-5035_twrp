@@ -12,10 +12,14 @@ BUILD_ID := NRD90M
 # ro.build.display.id
 # BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
+# ro.build.version.incremental
 BUILD_NUMBER := 1519639381
 
 # ro.build.date.utc
 BUILD_DATE_UTC := 1519639302
+
+# ro.build.user
+USER=android
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
