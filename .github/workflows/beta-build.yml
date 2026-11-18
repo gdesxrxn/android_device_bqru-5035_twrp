@@ -78,7 +78,7 @@ jobs:
       - name: Inject Env
         # Временная сложность O(K), где K - размер файла .env. Пространственная сложность O(K) для IPC передачи в GITHUB_ENV.
         # Митигация потери состояния: прямая трансляция переменных конфигурации в глобальную RAM область Runner-а.
-        working-directory: $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}
+        working-directory: ${{ env.DEVICE_PATH }}
         run: cat v2600cn.env >> $GITHUB_ENV
 
       - name: Compile
