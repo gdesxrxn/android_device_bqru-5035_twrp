@@ -50,10 +50,8 @@ jobs:
 
       - name: Patch omni-aosp, omni-default
         working-directory: ${{ env.WORKSPACE_DIR }}/.repo/manifests
-        run: |
-          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
-          git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/02-omni-default.patch
-
+        run: git apply $GITHUB_WORKSPACE/${{ env.DEVICE_PATH }}/${{ env.PATCH_BASE }}/01-omni-aosp.patch
+          
       - name: Sync Source
         working-directory: ${{ env.WORKSPACE_DIR }}
         # Конкурентное исполнение сетевых I/O операций масштабируется до аппаратного предела хоста. Временная сложность O(N/C), где N - объем репозиториев, C - количество CPU ядер.
