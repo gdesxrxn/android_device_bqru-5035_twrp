@@ -79,7 +79,7 @@ jobs:
         working-directory: ${{ env.WORKSPACE_DIR }}
         env:
           ALLOW_MISSING_DEPENDENCIES: "true"
-         # TARGET_PRODUCT: ${{ env.DEVICE_TARGET }}
+          TARGET_PRODUCT: ${{ env.DEVICE_TARGET }}
          # TARGET_BUILD_VARIANT: "eng"
         run: |
           source build/envsetup.sh
