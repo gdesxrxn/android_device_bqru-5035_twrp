@@ -22,7 +22,7 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 BUILD_DATE_UTC := 1519639302
 
 # ro.build.type= eng, userdebug, user
-TARGET_BUILD_VARIANT := userdebug
+TARGET_BUILD_VARIANT := user
 # test PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # ro.build.user=
