@@ -34,7 +34,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 # ro.build.tags test-keys, dev-keys, release-keys
 # PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=dev-keys
 
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_FLAVOR=BQru-5035-user
+# ro.build.flavor
+# PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_FLAVOR=BQru-5035-user
+
+# ro.product.board=
+TARGET_BOOTLOADER_BOARD_NAME := BQru-5035
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
