@@ -16,7 +16,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=alps-mp-n0.mp2-V1_tinno6580.we.
 BUILD_NUMBER := 1519639381
 
 # ro.build.version.security_patch=
-PLATFORM_SECURITY_PATCH := 2017-07-05
+# PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date
 # PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
@@ -26,10 +26,10 @@ TARGET_BUILD_VARIANT := eng
 # PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # ro.build.user=
-USER := android
+# USER := android
 
 # ro.build.host
-PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
+# PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 
 # ro.build.tags test-keys, dev-keys, release-keys
 # PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=dev-keys
@@ -47,7 +47,7 @@ PRODUCT_NAME := BQru-5035
 # TARGET_BOOTLOADER_BOARD_NAME := BQru-5035
 
 # ro.product.manufacturer=
-# PRODUCT_MANUFACTURER := BQru
+#. PRODUCT_MANUFACTURER := BQru
 
 
 
