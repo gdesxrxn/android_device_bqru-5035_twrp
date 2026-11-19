@@ -1,6 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-DATE_FROM_FILE := env TZ=Asia/Shanghai date -d @1519639302
+PRODUCT_BUILD_PROP_OVERRIDES += DATE_FROM_FILE="env TZ=Asia/Shanghai date -d @1519639302"
 
 # ro.bootimage.build.date.utc
 BOOTIMAGE_BUILD_DATE_UTC := 1519639302
