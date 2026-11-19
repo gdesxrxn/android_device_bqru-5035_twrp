@@ -41,7 +41,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 # PRODUCT_BRAND := BQru
 
 # ro.product.name=
-# PRODUCT_NAME := BQru-5035
+PRODUCT_NAME := BQru-5035
 
 # ro.product.board=
 # TARGET_BOOTLOADER_BOARD_NAME := BQru-5035
