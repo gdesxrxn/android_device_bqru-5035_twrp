@@ -37,19 +37,20 @@ PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 # ro.build.flavor
 # PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_FLAVOR=BQru-5035-user
 
+# ro.product.brand=
+PRODUCT_BRAND := BQru
+
+# ro.product.name=
+PRODUCT_NAME := BQru-5035
+
 # ro.product.board=
 TARGET_BOOTLOADER_BOARD_NAME := BQru-5035
-
-# Сборочное имя (То, что ищет команда lunch)
-# ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
-PRODUCT_NAME := BQru-5035
 
 # Железо (То, как называется папка с файлами устройства)
 # ДОКАЗАТЕЛЬСТВО: ro.build.product=v2600cn и ro.mediatek.project.path=device/tinno/v2600cn из default.prop
 PRODUCT_DEVICE := v2600cn
 
 PRODUCT_MODEL := BQru-5035
-PRODUCT_BRAND := BQru
 PRODUCT_MANUFACTURER := BQru
 
 # Криптографический отпечаток сборки (Оставляем как есть)
