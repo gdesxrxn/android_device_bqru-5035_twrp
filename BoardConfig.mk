@@ -4,7 +4,7 @@ LOCAL_PATH := device/tinno/v2600cn
 # Архитектура (доказано dalvik.vm.isa.arm.variant=cortex-a7 и ro.product.cpu.abi=armeabi-v7a)
 TARGET_ARCH := arm
 # TARGET_ARCH_VARIANT := armv7-a-neon
-# TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI := armeabi-v7a
 # TARGET_CPU_ABI2 := armeabi
 # TARGET_CPU_VARIANT := cortex-a7
 # TARGET_BOARD_PLATFORM := mt6580
