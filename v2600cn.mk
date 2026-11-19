@@ -32,7 +32,7 @@ USER := android
 PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 
 # ro.build.tags
-BUILD_VERSION_TAGS := release-keys
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
