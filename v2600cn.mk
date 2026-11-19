@@ -19,7 +19,7 @@ BUILD_NUMBER := 1519639381
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date
-PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
+# PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
@@ -27,6 +27,9 @@ TARGET_BUILD_VARIANT := eng
 
 # ro.build.user=
 USER := android
+
+# ro.build.host
+HOSTNAME := ubuntu
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
