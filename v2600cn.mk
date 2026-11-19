@@ -22,7 +22,7 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 # PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
 
 # ro.build.date.utc
-# DATE := env TZ=Asia/Shanghai date -d @1519639302
+DATE := env TZ=Asia/Shanghai date -d @1519639302
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
