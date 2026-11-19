@@ -11,7 +11,6 @@ BUILD_ID := NRD90M
 
 # ro.build.display.id
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=alps-mp-n0.mp2-V1_tinno6580.we.n
-# BUILD_DISPLAY_lD := alps-mp-n0.mp2-V1_tinno6580.we.n
 
 # ro.build.version.incremental=
 BUILD_NUMBER := 1519639381
@@ -19,11 +18,11 @@ BUILD_NUMBER := 1519639381
 # ro.build.version.security_patch=
 PLATFORM_SECURITY_PATCH := 2017-07-05
 
-
+# ro.build.date
 # PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
 
 # ro.build.date.utc
-BUILD_DATE_UTC := 1519639302
+DATE := env TZ=Asia/Shanghai date -d @1519639302
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
