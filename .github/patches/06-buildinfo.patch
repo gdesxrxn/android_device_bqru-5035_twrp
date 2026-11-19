@@ -1,5 +1,5 @@
 diff --git a/tools/buildinfo.sh b/tools/buildinfo.sh
-index bee4644..43d8aeb 100755
+index bee4644..6c91ad0 100755
 --- a/tools/buildinfo.sh
 +++ b/tools/buildinfo.sh
 @@ -17,7 +17,7 @@ echo "ro.build.date=`$DATE`"
@@ -7,7 +7,7 @@ index bee4644..43d8aeb 100755
  echo "ro.build.type=$TARGET_BUILD_TYPE"
  echo "ro.build.user=$USER"
 -echo "ro.build.host=`hostname`"
-+echo "ro.build.host=$HOSTNAME"
++echo "ro.build.host=$HOST"
  echo "ro.build.tags=$BUILD_VERSION_TAGS"
  echo "ro.build.flavor=$TARGET_BUILD_FLAVOR"
  if [ -n "$BOARD_BUILD_SYSTEM_ROOT_IMAGE" ] ; then
