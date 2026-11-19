@@ -1,9 +1,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
+# ro.bootimage.build.date, ro.bootimage.build.date.utc
 BOOTIMAGE_DATE := env TZ=Asia/Shanghai date -d @1519639302
-
-# ro.bootimage.build.date.utc
-BOOTIMAGE_BUILD_DATE_UTC := 1519639302
 
 # ro.bootimage.build.fingerprint
 BOOTIMAGE_BUILD_FINGERPRINT := alps/full_v2600cn/v2600cn:7.0/NRD90M/1519639381:user/release-keys
