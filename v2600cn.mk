@@ -1,6 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# ro.bootimage.build.date, ro.bootimage.build.date.utc
+# ro.bootimage.build.date, ro.bootimage.build.date.utc, ro.build.date.utc
 BUILD_DATE := env TZ=Asia/Shanghai date -d @1519639302
 
 # ro.bootimage.build.fingerprint
@@ -20,9 +20,6 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.date
 PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
-
-# ro.build.date.utc
-# DATE := env TZ=Asia/Shanghai date -d @1519639302
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
