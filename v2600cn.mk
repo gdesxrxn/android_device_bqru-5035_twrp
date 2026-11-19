@@ -29,7 +29,7 @@ TARGET_BUILD_VARIANT := eng
 USER := android
 
 # ro.build.host
-HOST := ubuntu
+PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
