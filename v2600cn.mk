@@ -23,7 +23,7 @@ PLATFORM_SECURITY_PATCH := 2017-07-05
 
 # ro.build.type= eng, userdebug, user
 TARGET_BUILD_VARIANT := eng
-# PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # ro.build.user=
 USER := android
@@ -32,7 +32,9 @@ USER := android
 PRODUCT_BUILD_PROP_OVERRIDES += HOST=ubuntu
 
 # ro.build.tags test-keys, dev-keys, release-keys
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=dev-keys
+# PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=dev-keys
+
+# TARGET_BUILD_FLAVOR := BQru-5035-user
 
 # Сборочное имя (То, что ищет команда lunch)
 # ДОКАЗАТЕЛЬСТВО: ro.build.flavor=BQru-5035-user из default.prop
