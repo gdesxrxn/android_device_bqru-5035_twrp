@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # PRODUCT_BUILD_PROP_OVERRIDES += DATE="env TZ=Asia/Shanghai date -d @1519639302"
 
 # ro.build.type= eng, userdebug, user
-TARGET_BUILD_VARIANT := eng
+# TARGET_BUILD_VARIANT := eng
 # PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # ro.build.user=
