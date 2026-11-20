@@ -3,6 +3,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # ro.product.name=
 PRODUCT_NAME := BQru-5035
 
+# ro.product.brand=
+PRODUCT_BRAND := BQru
+
 # ro.bootimage.build.date, ro.bootimage.build.date.utc, ro.build.date.utc
 # BUILD_DATE := env TZ=Asia/Shanghai date -d @1519639302
 
@@ -40,8 +43,7 @@ PRODUCT_NAME := BQru-5035
 # ro.build.flavor
 # PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_FLAVOR=BQru-5035-user
 
-# ro.product.brand=
-#. PRODUCT_BRAND := BQru
+
 
 
 
