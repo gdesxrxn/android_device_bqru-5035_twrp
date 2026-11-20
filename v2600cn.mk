@@ -38,10 +38,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 # PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_FLAVOR=BQru-5035-user
 
 # ro.product.brand=
-PRODUCT_BRAND := BQru
+#. PRODUCT_BRAND := BQru
 
 # ro.product.name=
-PRODUCT_NAME := BQru-5035
+#. PRODUCT_NAME := BQru-5035
 
 # ro.product.board=
 # TARGET_BOOTLOADER_BOARD_NAME := BQru-5035
