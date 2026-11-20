@@ -5,7 +5,7 @@ LOCAL_PATH := device/tinno/v2600cn
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_VARIANT := cortex-a7
-# TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT := armv7-a-neon
 
 # TARGET_CPU_ABI2 := armeabi
 
