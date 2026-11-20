@@ -1,6 +1,3 @@
-# Оригинальный путь сборки Tinno Mobile
-LOCAL_PATH := device/tinno/v2600cn
-
 # Архитектура (доказано dalvik.vm.isa.arm.variant=cortex-a7 и ro.product.cpu.abi=armeabi-v7a)
 TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
@@ -11,7 +8,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 
 # TARGET_BOARD_PLATFORM := mt6580
 
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/tinno/v2600cn/prebuilt/kernel
 
 # Параметры загрузчика (доказано magiskboot)
 BOARD_KERNEL_BASE := 0x80000000
