@@ -11,7 +11,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 
 # TARGET_BOARD_PLATFORM := mt6580
 
-# TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # Параметры загрузчика (доказано magiskboot)
 BOARD_KERNEL_BASE := 0x80000000
