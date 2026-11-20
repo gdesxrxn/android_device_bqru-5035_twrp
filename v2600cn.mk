@@ -1,4 +1,4 @@
-$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
 
 # ro.product.name=
 PRODUCT_NAME := BQru-5035
