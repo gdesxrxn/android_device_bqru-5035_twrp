@@ -12,7 +12,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 # TARGET_BOARD_PLATFORM := mt6580
 
 # Ядро и Device Tree (доказано magiskboot: KERNEL_DTB_SZ [48220])
-TARGET_NO_BOOTLOADER := true
+# TARGET_NO_BOOTLOADER := true
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 # BOARD_PREBUILT_DTB := $(LOCAL_PATH)/prebuilt/kernel_dtb
 
