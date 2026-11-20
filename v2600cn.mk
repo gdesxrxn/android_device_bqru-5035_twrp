@@ -6,6 +6,8 @@ PRODUCT_NAME := BQru-5035
 # ro.product.brand=
 PRODUCT_BRAND := BQru
 
+PRODUCT_DEVICE := v2600cn
+
 # ro.bootimage.build.date, ro.bootimage.build.date.utc, ro.build.date.utc
 # BUILD_DATE := env TZ=Asia/Shanghai date -d @1519639302
 
@@ -55,7 +57,7 @@ PRODUCT_BRAND := BQru
 
 
 
-# PRODUCT_DEVICE := v2600cn
+
 
 # PRODUCT_MODEL := BQru-5035
 
