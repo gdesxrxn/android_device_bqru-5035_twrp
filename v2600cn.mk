@@ -51,7 +51,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 
 
-PRODUCT_DEVICE := v2600cn
+# PRODUCT_DEVICE := v2600cn
 
 # PRODUCT_MODEL := BQru-5035
 
